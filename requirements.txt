@@ -1,0 +1,4 @@
+Flask
+requests
+
+# run pip install -r requirements.txt

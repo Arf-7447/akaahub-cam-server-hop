@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAM Server Hop</title>
+    <!-- icon -->
+    <link rel="icon"
+    type="image/png"
+    href="{{ url_for('static', filename='images/logo-app.png') }}">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-950 text-white min-h-screen overflow-x-hidden">
+
+    <!-- Background -->
+    <div class="fixed inset-0 bg-gradient-to-br from-indigo-900 via-slate-950 to-cyan-900 opacity-90"></div>
+
+    <!-- Container -->
+    <div class="relative z-10 min-h-screen flex items-center justify-center px-4 py-6 sm:px-6 lg:px-8">
+
+    <!-- Card -->
+    <div class="relative w-full max-w-5xl backdrop-blur-xl bg-white/10 border border-white/20 rounded-3xl shadow-2xl overflow-hidden">
+
+        <!-- Alarm Toggle -->
+        <div class="absolute top-4 right-4 z-20">
+
+            <button
+                id="alarm-toggle"
+                onclick="toggleAlarm()"
+                class="flex items-center justify-center w-12 h-12 rounded-full bg-black/30 border border-white/20 hover:bg-black/50 transition-all duration-300">
+
+                <!-- Speaker Off Default -->
+                <span id="speaker-icon" class="text-2xl">
+                    🔇
+                </span>
+
+            </button>
+
+        </div>
+
+            <!-- Header -->
+<!-- Header -->
+<div class="px-5 sm:px-8 pt-6 pb-6">
+
+    <div class="flex flex-col sm:flex-row items-center sm:items-start gap-4">
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+
+            <img
+                src="{{ url_for('static', filename='images/logo-app.png') }}"
+                alt="Logo App"
+                class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 object-contain drop-shadow-2xl">
+
+        </div>
+
+        <!-- Title -->
+        <div class="text-center sm:text-left">
+
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-cyan-400 break-words leading-tight">
+                AkaaHub - CAM
+            </h1>
+
+            <p class="mt-2 text-sm sm:text-base text-slate-300">
+                CAM Server Hop | by Akaa
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+            <!-- Main Content -->
+            <div class="px-4 sm:px-6 lg:px-8 pb-8">
+
+                <!-- Top Grid -->
+                <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+
+                    <!-- Boss Info -->
+                    <div class="bg-white/10 rounded-2xl border border-white/10 p-5 sm:p-6">
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-indigo-300 mb-5">
+                            Boss Spawn Info
+                        </h2>
+
+                        <div class="space-y-5">
+
+                            <!-- Next Spawn -->
+                            <div>
+                                <p class="text-sm text-slate-300 mb-1">
+                                    Next Boss Spawn
+                                </p>
+
+                                <div id="next-spawn"
+                                     class="text-xl sm:text-2xl font-black text-cyan-400 break-words">
+                                    Loading...
+                                </div>
+                            </div>
+
+                            <!-- Despawn -->
+                            <div>
+                                <p class="text-sm text-slate-300 mb-1">
+                                    Boss Despawn
+                                </p>
+
+                                <div id="despawn-time"
+                                     class="text-lg sm:text-xl font-bold text-red-400 break-words">
+                                    Loading...
+                                </div>
+                            </div>
+
+                            <!-- Status -->
+                            <div>
+                                <p class="text-sm text-slate-300 mb-1">
+                                    Boss Status
+                                </p>
+
+                                <div id="boss-status"
+                                     class="text-lg sm:text-xl font-semibold text-green-400 break-words">
+                                    Waiting...
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Countdown -->
+                    <div class="bg-white/10 rounded-2xl border border-white/10 p-5 sm:p-6 flex flex-col justify-center">
+
+                        <h2 class="text-xl sm:text-2xl font-bold text-cyan-300 mb-5 text-center">
+                            Countdown
+                        </h2>
+
+                        <div class="flex justify-center items-center">
+
+                            <div id="countdown"
+                                 class="text-5xl sm:text-6xl md:text-7xl font-black text-cyan-400 tracking-wider text-center break-all">
+                                00:00
+                            </div>
+
+                        </div>
+
+                        <p id="countdown-label"
+                        class="mt-5 text-center text-sm sm:text-base text-slate-300 transition-all duration-300">
+                            until next boss spawn
+                        </p>
+
+                    </div>
+
+                </div>
+
+<!-- Quick Info -->
+<div class="mt-6 bg-white/10 rounded-2xl border border-white/10 p-5 sm:p-6">
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+
+        <div class="bg-black/20 rounded-xl p-4">
+            <div class="text-cyan-400 text-2xl font-black">
+                15 Minutes
+            </div>
+
+            <div class="text-sm text-slate-300 mt-1">
+                Spawn Interval
+            </div>
+        </div>
+
+        <div class="bg-black/20 rounded-xl p-4">
+            <div class="text-red-400 text-2xl font-black">
+                5 Minutes
+            </div>
+
+            <div class="text-sm text-slate-300 mt-1">
+                Boss Duration
+            </div>
+        </div>
+
+        <div class="bg-black/20 rounded-xl p-4">
+            <div class="text-green-400 text-2xl font-black">
+                12
+            </div>
+
+            <div class="text-sm text-slate-300 mt-1">
+                Max Players
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+                <!-- Button -->
+                <div class="mt-8 flex justify-center">
+
+                    <button
+                        onclick="joinRandomServer()"
+                        class="w-full sm:w-auto bg-gradient-to-r from-cyan-500 to-indigo-500 hover:scale-105 active:scale-95 transition-all duration-300 px-6 sm:px-10 py-4 rounded-2xl font-bold text-base sm:text-lg shadow-2xl">
+
+                        🎮 Randomize Server Hop 🎮
+
+                    </button>
+
+                </div>
+
+                <!-- Server Info -->
+                <div id="server-info"
+                     class="mt-6 hidden bg-white/10 rounded-2xl border border-white/10 p-5 sm:p-6 break-words">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <audio id="boss-audio">
+
+        <source
+            src="{{ url_for('static', filename='audio/alarm.mp3') }}"
+            type="audio/mpeg">
+    
+    </audio>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
