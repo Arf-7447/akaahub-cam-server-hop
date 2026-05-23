@@ -57,7 +57,11 @@ def fetch_servers():
             url = (
                 f"https://games.roblox.com/v1/games/"
                 f"{PLACE_ID}/servers/Public"
-                f"?sortOrder=Desc"
+                # High to Low
+                # f"?sortOrder=Desc"
+                
+                # Low to High
+                f"?sortOrder=Asc"
                 f"&limit=100"
             )
 
